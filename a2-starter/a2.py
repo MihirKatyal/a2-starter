@@ -15,13 +15,7 @@ class Profile:
         self.username = username
         self.password = password
         self.bio = bio
-
-class Profile:
-    def __init__(self, username, password, bio):
-        self.username = username
-        self.password = password
-        self.bio = bio
-
+        
     def save(self, filename):
         data = {
             'username': self.username,
