@@ -73,15 +73,18 @@ def delete_file(file_path):
         print("ERROR")
 
 def read_file(file_path):
-    if file_path.suffix != ".dsu":
-        print("ERROR")
-    elif not file_path.exists():
-        print("ERROR")
-    elif file_path.stat().st_size == 0:
-        print("EMPTY")
-    else:
+    try:
+        if file_path.suffix != ".dsu":
+            raise ValueError("Can only read .dsu files")
+        if not file_path.exists():
+            raise FileNotFoundError("File does not exist")
         with file_path.open() as file:
-            print(file.read().strip())
+            content = file.read().strip()
+            print(content if content else "File is empty")
+    except FileNotFoundError as e:
+        print(e)
+    except ValueError as e:
+        print(e)
 
 def main():
     while True:
