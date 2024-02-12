@@ -66,7 +66,7 @@ def edit_profile(profile, args):
             else:
                 print("Failed to delete post.")
     try:
-        profile.save(filename)  # Assumes filename is stored or passed appropriately
+        profile.save(filename)  # Assumed filename is stored 
         print("Profile updated.")
     except DsuFileError as e:
         print(f"Failed to update profile: {e}")
@@ -74,8 +74,32 @@ def edit_profile(profile, args):
 def print_profile(profile, args):
     if '-all' in args:
         print(f"Username: {profile.username}, Password: {profile.password}, Bio: {profile.bio}")
-        for post in profile.get_posts():
-            print(f"Post: {post.entry}, Timestamp: {post.timestamp}")
+        for index, post in enumerate(profile.get_posts()):
+            print(f"Post {index + 1}: {post.entry}, Timestamp: {post.timestamp}")
+    if '-usr' in args:
+        print(f"Username: {profile.username}")
+    if '-pwd' in args:
+        print(f"Password: {profile.password}")
+    if '-bio' in args:
+        print(f"Bio: {profile.bio}")
+    if '-posts' in args:
+        for index, post in enumerate(profile.get_posts()):
+            print(f"Post {index + 1}: {post.entry}, Timestamp: {post.timestamp}")
+    if '-post' in args:
+        post_index = args.index('-post') + 1
+        if post_index < len(args):
+            try:
+                post_id = int(args[post_index]) - 1  # Assumed that post IDs start at 1 
+                posts = profile.get_posts()
+                if 0 <= post_id < len(posts):
+                    post = posts[post_id]
+                    print(f"Post {post_id + 1}: {post.entry}, Timestamp: {post.timestamp}")
+                else:
+                    print("Post ID is out of range.")
+            except ValueError:
+                print("Invalid post ID.")
+        else:
+            print("Post ID not specified.")
 
 def list_directory(path, options):
     files = []
@@ -125,7 +149,7 @@ def read_file(file_path):
         print(e)
 
 def main():
-    current_priofile = None
+    current_profile = None
     current_filename = None
     
     while True:
