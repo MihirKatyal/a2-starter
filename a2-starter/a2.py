@@ -15,7 +15,7 @@ class Profile:
         self.username = username
         self.password = password
         self.bio = bio
-        
+
     def save(self, filename):
         data = {
             'username': self.username,
@@ -24,6 +24,17 @@ class Profile:
         }
         with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
+
+def create_profile(directory, name):
+    print("Creating a new profile...")
+    username = input("Username: ")
+    password = input("Password: ")
+    bio = input("Bio: ")
+
+    profile = Profile(username, password, bio)
+    filename = Path(directory) / f"{name}.dsu"
+    profile.save(filename)
+    print(f"Profile saved to {filename}")
 
 def list_directory(path, options):
     files = []
