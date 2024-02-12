@@ -10,6 +10,7 @@ from pathlib import Path
 import json
 
 # Placeholder for the Profile class - replace with actual import
+
 class Profile:
     def __init__(self, username, password, bio):
         self.username = username
@@ -57,6 +58,17 @@ def list_directory(path, options):
 
     for file in files:
         print(file)
+
+def delete_file(file_path):
+    try:
+        if file_path.suffix != ".dsu":
+            raise ValueError("Can only delete .dsu files")
+        file_path.unlink()
+        print(f"{file_path} deleted")
+    except FileNotFoundError:
+        print("File not found")
+    except ValueError as e:
+        print(e)
 
 def read_file(file_path):
     try:
