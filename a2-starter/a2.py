@@ -91,35 +91,18 @@ def main():
         command = args[0]
 
         if command == 'Q':
-            print("Quitting the program.")
             break
-        elif command == 'L':
-            if len(args) < 2:
-                print("Please provide a directory path.")
-                continue
-
-            directory_path = args[1]
-            options = {arg: args[i + 1] for i, arg in enumerate(args[2:]) if arg.startswith('-')}
-
-            list_directory(directory_path, options)
-        elif command == 'C':
-            if len(args) < 4 or args[2] != '-n':
-                print("Invalid command. Usage: C [Directory] -n [name]")
-                continue
-
-            directory_path = args[1]
-            name = args[3]
-
-            create_file(directory_path, name)
-        elif command == 'D':
-            if len(args) < 2:
-                print("Please provide a file path.")
-                continue
-
-            file_path = Path(args[1])
-            read_file(file_path)
+        elif command == 'C' and len(args) >= 4 and args[2] == '-n':
+            create_profile(args[1], args[3])
+        elif command == 'L' and len(args) >= 2:
+            options = {args[i]: args[i + 1] for i in range(2, len(args), 2)}
+            list_directory(args[1], options)
+        elif command == 'D' and len(args) == 2:
+            delete_file(Path(args[1]))
+        elif command == 'R' and len(args) == 2:
+            read_file(Path(args[1]))
         else:
-            print("Error")
+            print("Invalid command")
 
 if __name__ == "__main__":
     main()
