@@ -76,9 +76,6 @@ def print_profile(profile, args):
         for post in profile.get_posts():
             print(f"Post: {post.entry}, Timestamp: {post.timestamp}")
 
-
-
-
 def list_directory(path, options):
     files = []
     for file_path in Path(path).rglob("*"):
@@ -127,6 +124,9 @@ def read_file(file_path):
         print(e)
 
 def main():
+    current_priofile = None
+    current_filename = None
+    
     while True:
         user_input = input("Enter command: ")
         args = user_input.split()
@@ -136,6 +136,7 @@ def main():
             break
         elif command == 'C' and len(args) >= 4 and args[2] == '-n':
             create_profile(args[1], args[3])
+            current_filename = Path(args[1]) / f"{args[3]}.dsu"  # Remember the new profile's filename
         elif command == 'L' and len(args) >= 2:
             options = {args[i]: args[i + 1] for i in range(2, len(args), 2)}
             list_directory(args[1], options)
@@ -143,8 +144,17 @@ def main():
             delete_file(Path(args[1]))
         elif command == 'R' and len(args) == 2:
             read_file(Path(args[1]))
+        elif command == 'O' and len(args) == 2:  # Open existing profile
+            current_filename = Path(args[1])
+            current_profile = load_profile(current_filename)
+        elif command == 'E' and current_profile and len(args) > 2:  # Edit current profile
+            edit_profile(current_profile, args)
+            # this is to save the profile after editing to keep changes
+            current_profile.save(current_filename)
+        elif command == 'P' and current_profile and len(args) > 1:  # Print profile information
+            print_profile(current_profile, args)
         else:
-            print("Invalid command")
+            print("Invalid command or arguments")
 
 if __name__ == "__main__":
     main()
