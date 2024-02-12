@@ -6,6 +6,7 @@
 
 # Starter code for assignment 2 in ICS 32 Programming with Software Libraries in Python
 
+from fileinput import filename
 from pathlib import Path
 import json
 from Profile import Profile, Post, DsuFileError, DsuProfileError
