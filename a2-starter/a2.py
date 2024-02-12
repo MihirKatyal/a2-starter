@@ -48,6 +48,28 @@ def load_profile(filename):
     except (DsuFileError, DsuProfileError) as e:
         print(f"Failed to load profile: {e}")
         return None
+    
+def edit_profile(profile, args):
+    for i in range(1, len(args), 2):
+        if args[i] == '-usr':
+            profile.username = args[i + 1]
+        elif args[i] == '-pwd':
+            profile.password = args[i + 1]
+        elif args[i] == '-bio':
+            profile.bio = args[i + 1]
+        elif args[i] == '-addpost':
+            profile.add_post(Post(args[i + 1]))
+        elif args[i] == '-delpost':
+            if profile.del_post(int(args[i + 1])):
+                print("Post deleted.")
+            else:
+                print("Failed to delete post.")
+    try:
+        profile.save(filename)  # Assumes filename is stored or passed appropriately
+        print("Profile updated.")
+    except DsuFileError as e:
+        print(f"Failed to update profile: {e}")
+
 
 
 
