@@ -1,3 +1,7 @@
+# NAME
+# EMAIL
+# STUDENT ID
+
 # a2.py
 
 # Starter code for assignment 2 in ICS 32 Programming with Software Libraries in Python
@@ -90,9 +94,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Replace the following placeholders with your information.
-
-# NAME
-# EMAIL
-# STUDENT ID
