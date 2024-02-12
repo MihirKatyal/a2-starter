@@ -33,8 +33,11 @@ def create_profile(directory, name):
 
     profile = Profile(username, password, bio)
     filename = Path(directory) / f"{name}.dsu"
-    profile.save(filename)
-    print(f"Profile saved to {filename}")
+    try:
+        profile.save(filename)
+        print(f"Profile saved to {filename}")
+    except DsuFileError as e:
+        print(f"Failed to save profile: {e}")
 
 def list_directory(path, options):
     files = []
