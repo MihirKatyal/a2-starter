@@ -8,8 +8,7 @@
 
 from pathlib import Path
 import json
-
-# Placeholder for the Profile class - replace with actual import
+from Profile import Profile, Post, DsuFileError, DsuProfileError
 
 class Profile:
     def __init__(self, username, password, bio):
