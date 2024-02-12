@@ -39,6 +39,19 @@ def create_profile(directory, name):
     except DsuFileError as e:
         print(f"Failed to save profile: {e}")
 
+def load_profile(filename):
+    try:
+        profile = Profile()
+        profile.load(filename)
+        print(f"Loaded profile from {filename}")
+        return profile
+    except (DsuFileError, DsuProfileError) as e:
+        print(f"Failed to load profile: {e}")
+        return None
+
+
+
+
 def list_directory(path, options):
     files = []
     for file_path in Path(path).rglob("*"):
