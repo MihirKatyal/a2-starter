@@ -16,6 +16,21 @@ class Profile:
         self.password = password
         self.bio = bio
 
+class Profile:
+    def __init__(self, username, password, bio):
+        self.username = username
+        self.password = password
+        self.bio = bio
+
+    def save(self, filename):
+        data = {
+            'username': self.username,
+            'password': self.password,
+            'bio': self.bio
+        }
+        with open(filename, 'w') as file:
+            json.dump(data, file, indent=4)
+
 def list_directory(path, options):
     files = []
     for file_path in Path(path).rglob("*"):
