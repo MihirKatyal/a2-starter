@@ -63,14 +63,19 @@ def create_file(directory, name):
     new_file.touch()
     print(new_file)
 
-def delete_file(file_path):
-    if file_path.suffix != ".dsu":
-        print("ERROR")
-    elif file_path.exists():
-        file_path.unlink()
-        print(f"{file_path} DELETED")
-    else:
-        print("ERROR")
+def read_file(file_path):
+    try:
+        if file_path.suffix != ".dsu":
+            raise ValueError("Can only read .dsu files")
+        if not file_path.exists():
+            raise FileNotFoundError("File does not exist")
+        with file_path.open() as file:
+            content = file.read().strip()
+            print(content if content else "File is empty")
+    except FileNotFoundError as e:
+        print(e)
+    except ValueError as e:
+        print(e)
 
 def read_file(file_path):
     try:
