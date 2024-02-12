@@ -84,20 +84,6 @@ def read_file(file_path):
     except ValueError as e:
         print(e)
 
-def read_file(file_path):
-    try:
-        if file_path.suffix != ".dsu":
-            raise ValueError("Can only read .dsu files")
-        if not file_path.exists():
-            raise FileNotFoundError("File does not exist")
-        with file_path.open() as file:
-            content = file.read().strip()
-            print(content if content else "File is empty")
-    except FileNotFoundError as e:
-        print(e)
-    except ValueError as e:
-        print(e)
-
 def main():
     while True:
         user_input = input("Enter command: ")
