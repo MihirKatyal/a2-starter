@@ -70,6 +70,11 @@ def edit_profile(profile, args):
     except DsuFileError as e:
         print(f"Failed to update profile: {e}")
 
+def print_profile(profile, args):
+    if '-all' in args:
+        print(f"Username: {profile.username}, Password: {profile.password}, Bio: {profile.bio}")
+        for post in profile.get_posts():
+            print(f"Post: {post.entry}, Timestamp: {post.timestamp}")
 
 
 
