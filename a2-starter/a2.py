@@ -7,6 +7,14 @@
 # Starter code for assignment 2 in ICS 32 Programming with Software Libraries in Python
 
 from pathlib import Path
+import json
+
+# Placeholder for the Profile class - replace with actual import
+class Profile:
+    def __init__(self, username, password, bio):
+        self.username = username
+        self.password = password
+        self.bio = bio
 
 def list_directory(path, options):
     files = []
