@@ -181,6 +181,11 @@ def admin_mode():
 def main():
     current_profile = None
     current_filename = None
+
+    while True:
+        if not user_interface():
+            break
+        admin_mode()
     
     while True:
         user_input = input("Enter command: ")
