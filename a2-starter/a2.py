@@ -155,6 +155,19 @@ def user_interface():
     print("admin - Enter Admin mode for advanced commands")
     choice = input("Your choice (c/l/admin): ").strip().lower()
 
+    if choice == 'c':
+        directory = input("Enter the directory where the file should be created: ")
+        name = input("What is the name of the new DSU file? ")
+        create_profile(directory, name)
+    elif choice == 'l':
+        filename = input("Enter the full path to the DSU file you would like to load: ")
+        load_profile(Path(filename))
+    elif choice == 'admin':
+        return True  # Proceed to admin_mode function
+    else:
+        print("Invalid choice. Please try again.")
+    return False  # Stay in user-friendly mode
+
 
 def main():
     current_profile = None
