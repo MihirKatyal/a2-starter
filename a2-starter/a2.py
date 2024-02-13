@@ -173,10 +173,6 @@ def main():
                     break
                 args = admin_command.split()
                 command = args[0].upper()
-    while True:
-        user_input = input("Enter command: ")
-        args = user_input.split()
-        command = args[0]
 
         if command == 'Q':
             break
