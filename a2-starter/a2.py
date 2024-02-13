@@ -148,6 +148,14 @@ def read_file(file_path):
     except ValueError as e:
         print(e)
 
+def user_interface():
+    print("Welcome! Please choose an option:")
+    print("c - Create a new DSU file")
+    print("l - Load an existing DSU file")
+    print("admin - Enter Admin mode for advanced commands")
+    choice = input("Your choice (c/l/admin): ").strip().lower()
+
+
 def main():
     current_profile = None
     current_filename = None
