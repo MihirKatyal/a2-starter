@@ -13,6 +13,6 @@ def user_interface():
     return choice
 
 def admin_mode():
-    print("Admin mode activated. Waiting for commands.")
+    print("Welcome to Admin mode! Please choose an option:")
     # Admin mode command prompt is handled in a2.py
 
