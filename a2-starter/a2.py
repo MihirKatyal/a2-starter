@@ -197,7 +197,7 @@ def main():
         elif command == 'P' and current_profile and len(args) > 1:  # Print profile information
             print_profile(current_profile, args)
         else:
-            print("Invalid command or arguments")
+            print("Invalid commands/arguments in admin mode. Please try again.")
 
 if __name__ == "__main__":
     main()
