@@ -1,6 +1,6 @@
-# NAME
-# EMAIL
-# STUDENT ID
+# Mihir Katyal
+# mkatyal@uci.edu
+# 19099879
 
 # a2.py
 
