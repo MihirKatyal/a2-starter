@@ -170,9 +170,10 @@ def user_interface():
 
 def admin_mode():
     print("Welcome to Admin mode! Please choose an option:")
-    user_input = input("> ").strip()
-    if user_input.lower() == 'q':
-        break
+    while True:
+        user_input = input("> ").strip()
+        if user_input.lower() == 'q':
+            break
     # Handle admin commands here, similar to the main function's logic
     # This is a placeholder for actual admin command processing
     print("Admin command processing is not implemented in this example.")
