@@ -10,6 +10,7 @@ from fileinput import filename
 from pathlib import Path
 import json
 from Profile import Profile, Post, DsuFileError, DsuProfileError
+import ui
 
 class Profile:
     def __init__(self, username, password, bio):
