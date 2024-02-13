@@ -166,8 +166,16 @@ def user_interface():
         return True  # Proceed to admin_mode function
     else:
         print("Invalid choice. Please try again.")
-    return False  # Stay in user-friendly mode
+    return False  # Stay in user mode
 
+def admin_mode():
+    print("Welcome to Admin mode! Please choose an option:")
+    user_input = input("> ").strip()
+    if user_input.lower() == 'q':
+        break
+    # Handle admin commands here, similar to the main function's logic
+    # This is a placeholder for actual admin command processing
+    print("Admin command processing is not implemented in this example.")
 
 def main():
     current_profile = None
