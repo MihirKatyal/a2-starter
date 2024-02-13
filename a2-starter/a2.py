@@ -153,10 +153,26 @@ def main():
     current_filename = None
 
     while True:
-        if not user_interface():
-            break
-        admin_mode()
-    
+        choice = ui.user_interface()
+
+        if choice == 'c':
+            directory = input("Enter the directory where the file should be created: ")
+            name = input("What is the name of the new DSU file? ")
+            create_profile(directory, name)
+            current_filename = Path(directory) / f"{name}.dsu"
+        elif choice == 'l':
+            filename = input("Enter the full path to the DSU file you would like to load: ")
+            current_profile = load_profile(Path(filename))
+            current_filename = Path(filename)
+        elif choice == 'admin':
+            # Switch to handling commands in admin mode
+            print("Admin mode activated. Type 'q' to quit admin mode.")
+            while True:
+                admin_command = input("> ").strip()
+                if admin_command.lower() == 'q':
+                    break
+                args = admin_command.split()
+                command = args[0].upper()
     while True:
         user_input = input("Enter command: ")
         args = user_input.split()
